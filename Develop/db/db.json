@@ -1,15 +1,15 @@
 {
-    "notes": [
-        {
-            "id": 0,
-            "title": "First Note", 
-            "text": "This is an example!"
-        },
-        {
-            "id": 1,
-            "title": "Feed The Cats",
-            "text": "The cats need to be fed three times a day. "
-        }
-    ]
+  "notes": [
+    {
+      "id": 0,
+      "title": "First Note",
+      "text": "This is an example!"
+    },
+    {
+      "id": 1,
+      "title": "Feed The Cats",
+      "text": "The cats need to be fed three times a day. "
+    }
+    
+  ]
 }
-   
