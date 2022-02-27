@@ -10,6 +10,11 @@ app.get('/api/notes', (req, res) => {
     res.json(notes);
 })
 
+app.post('api/notes', (req, res) => {
+    console.log(req.notes);
+    res.json(req.notes);
+})
+
 app.listen(3001, () => {
     console.log('API server on PORT 3001')
 })
