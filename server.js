@@ -22,17 +22,32 @@ function createNote(body, noteArray) {
     return body;
 }
 
+function validateNote(note) {
+    if (!note.title || typeof note.title !== 'string'){
+        return false;
+    }
+    if (!note.text || typeof note.text !== 'string'){
+        return false;
+    }
+    if (!note.id || typeof note.id !== 'string'){
+        return false;
+    };
+    return true;
+}
+
 app.get('/api/notes', (req, res) => {
     res.json(notes);
 })
 
 app.post('/api/notes', (req, res) => {
     req.body.id = uniqid()
-    console.log(req.body);
-
-    const note = createNote(req.body, notes)
-    res.json(note);
-})
+    if (!validateNote(req.body)) {
+        res.status(400).send('The note is not properly formatted.')
+    } else {
+        const note = createNote(req.body, notes)
+        res.json(note);
+    }
+});
 
 app.listen(3001, () => {
     console.log('API server on PORT 3001')
