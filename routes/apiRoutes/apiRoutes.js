@@ -21,22 +21,23 @@ router.post('/notes', (req, res) => {
     }
 });
 
-// router.get('/notes/:id'), (req, res) => {
-//     const noteID = req.params.id
+router.get('/notes/:id', (req, res) => {
+    const noteID = req.params.id
 
-//    const result = notes.filter(note => note.noteid === noteID); 
-//    return res.json(result)
-// }
-// router.delete('/notes/:id', (req, res) => {
-//     const { id } = request.params;
-//     const deletedNote = notes.find(note => note.id === id);
+   const result = notes.filter(note => note.noteid === noteID); 
+   return res.json(result)
+})
+
+router.delete('/notes/:id', (req, res) => {
+    const { id } = request.params;
+    const deletedNote = notes.find(note => note.id === id);
     
-//     if(!deletedNote) {
-//         res.status(404).send('The note cound not be deleted. The ID was not found.')
-//     } else {
-//         notes = notes.filter(note => note.id !== id);
-//         res.status(200).json(deleteNote)
-//     }
-// });
+    if(!deletedNote) {
+        res.status(404).send('The note cound not be deleted. The ID was not found.')
+    } else {
+        notes = notes.filter(note => note.id !== id);
+        res.status(200).json(deleteNote)
+    }
+});
 
 module.exports = router;
