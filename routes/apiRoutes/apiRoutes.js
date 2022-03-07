@@ -3,7 +3,7 @@ const router = require('express').Router();
 const uniqid = require('uniqid');
 
 const { validateNote, createNote, deleteNote } = require('../../lib/notes')
-const { notes } = require('../../db/db.json')
+var { notes } = require('../../db/db.json')
 
 const id = uniqid()
 
@@ -21,15 +21,9 @@ router.post('/notes', (req, res) => {
     }
 });
 
-router.get('/notes/:id', (req, res) => {
-    const noteID = req.params.id
-
-   const result = notes.filter(note => note.noteid === noteID); 
-   return res.json(result)
-})
 
 router.delete('/notes/:id', (req, res) => {
-    const { id } = request.params;
+    const { id } = req.params;
     const deletedNote = notes.find(note => note.id === id);
     
     if(!deletedNote) {
